@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Surpresa de Dia dos Namorados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: url('wp4575207-4k-galaxy-wallpapers.jpg');
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .heart {
+      width: 10vw;
+      height: 10vw;
+      background-image: url('Picsart_23-06-11_01-48-28-771.png');
+      margin-top: 4vh;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border:none;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .curtain {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin-top: auto;
+    }
+
+    .curtain-left,
+    .curtain-right {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      transition: transform 2s;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 1;
+    }
+
+    .curtain-left {
+      left: 0;
+      background-image: url('Picsart_23-06-11_00-46-43-512.png');
+    }
+
+    .curtain-right {
+      right: 0;
+      background-image: url('Picsart_23-06-11_00-46-01-731.png');
+    }
+
+    video {
+      position: absolute;
+      border-radius: 10px;
+      border: 1px solid white;
+      top: 50%;
+      left: 50%;
+      width: 80vw;
+      max-width: 800px;
+      height: auto;
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    @media only screen and (orientation: landscape) {
+      .heart {
+        width: 5vw;
+        height: 5vw;
+        margin-top: 2vh;
+      }
+
+      video {
+        width: 40vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="curtain">
+      <div class="curtain-left"></div>
+      <div class="curtain-right"></div>
+      <div class = "video">
+        <video controls>
+          <source src="https://www.dropbox.com/s/1hn2849ds6f82t3/Cage%20The%20Elephant%20-%20Come%20A%20Little%20Closer%20%28Official%20Video%29%28720P_HD%29.mp4?raw=1" type="video/mp4">
+        </video>
+        <input type="button" class="heart">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var heart = document.querySelector('.heart');
+    var curtainLeft = document.querySelector('.curtain-left');
+    var curtainRight = document.querySelector('.curtain-right');
+    var video = document.querySelector('video');
+    var audio = document.querySelector('audio');
+
+    heart.addEventListener('click', function() {
+      curtainLeft.style.transform = 'translateX(-100px)';
+      curtainRight.style.transform = 'translateX(100px)';
+      video.play();
+    });
+
+    video.addEventListener('ended', function(){
+      curtainLeft.style.transform = 'translateX(100px)';
+      curtainRight.style.transform = 'translateX(-100px)';
+      var phone = '+65765767697';
+      var message = "Amor, clica nesse link https://www.darksidebooks.com.br para escolher um livro qualquer pra você! Te amo muito!"
+      var wpplink = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(message);
+      
+      setTimeout(function(){
+        window.location.href = wpplink;
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
